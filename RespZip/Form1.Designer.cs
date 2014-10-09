@@ -138,9 +138,9 @@
             // pb_respaldar
             // 
             this.pb_respaldar.Image = global::RespZip.Properties.Resources.ZIP_icon;
-            this.pb_respaldar.Location = new System.Drawing.Point(266, 273);
+            this.pb_respaldar.Location = new System.Drawing.Point(266, 314);
             this.pb_respaldar.Name = "pb_respaldar";
-            this.pb_respaldar.Size = new System.Drawing.Size(67, 96);
+            this.pb_respaldar.Size = new System.Drawing.Size(67, 55);
             this.pb_respaldar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pb_respaldar.TabIndex = 3;
             this.pb_respaldar.TabStop = false;
