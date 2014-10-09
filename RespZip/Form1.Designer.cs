@@ -34,6 +34,7 @@
             this.tsb_respaldar = new System.Windows.Forms.ToolStripButton();
             this.tsb_configurar = new System.Windows.Forms.ToolStripButton();
             this.pan_respaldar = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.pb_respaldar = new System.Windows.Forms.PictureBox();
@@ -49,7 +50,6 @@
             this.txb_destino = new System.Windows.Forms.TextBox();
             this.txb_origen = new System.Windows.Forms.TextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.label3 = new System.Windows.Forms.Label();
             this.toolStrip1.SuspendLayout();
             this.pan_respaldar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_respaldar)).BeginInit();
@@ -109,6 +109,15 @@
             this.pan_respaldar.Size = new System.Drawing.Size(348, 426);
             this.pan_respaldar.TabIndex = 2;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(17, 17);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(112, 13);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Prenombre de Archivo";
+            // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(266, 390);
@@ -129,9 +138,9 @@
             // pb_respaldar
             // 
             this.pb_respaldar.Image = global::RespZip.Properties.Resources.ZIP_icon;
-            this.pb_respaldar.Location = new System.Drawing.Point(266, 311);
+            this.pb_respaldar.Location = new System.Drawing.Point(266, 273);
             this.pb_respaldar.Name = "pb_respaldar";
-            this.pb_respaldar.Size = new System.Drawing.Size(67, 58);
+            this.pb_respaldar.Size = new System.Drawing.Size(67, 96);
             this.pb_respaldar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pb_respaldar.TabIndex = 3;
             this.pb_respaldar.TabStop = false;
@@ -252,15 +261,6 @@
             // 
             this.timer1.Interval = 10;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(17, 17);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(112, 13);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Prenombre de Archivo";
             // 
             // form_respaldo
             // 
