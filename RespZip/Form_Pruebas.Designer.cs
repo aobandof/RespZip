@@ -44,7 +44,7 @@
             // 
             // startAsyncButton
             // 
-            this.startAsyncButton.Location = new System.Drawing.Point(47, 114);
+            this.startAsyncButton.Location = new System.Drawing.Point(47, 67);
             this.startAsyncButton.Name = "startAsyncButton";
             this.startAsyncButton.Size = new System.Drawing.Size(112, 42);
             this.startAsyncButton.TabIndex = 1;
@@ -54,7 +54,7 @@
             // 
             // cancelAsyncButton
             // 
-            this.cancelAsyncButton.Location = new System.Drawing.Point(188, 114);
+            this.cancelAsyncButton.Location = new System.Drawing.Point(184, 67);
             this.cancelAsyncButton.Name = "cancelAsyncButton";
             this.cancelAsyncButton.Size = new System.Drawing.Size(112, 42);
             this.cancelAsyncButton.TabIndex = 1;
@@ -72,12 +72,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(342, 198);
+            this.ClientSize = new System.Drawing.Size(350, 435);
             this.Controls.Add(this.cancelAsyncButton);
             this.Controls.Add(this.startAsyncButton);
             this.Controls.Add(this.resultLabel);
             this.Name = "Form_Pruebas";
             this.Text = "Form_Pruebas";
+            this.Load += new System.EventHandler(this.Form_Pruebas_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

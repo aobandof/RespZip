@@ -75,5 +75,10 @@ namespace RespZip
                 resultLabel.Text = "Esta Hecho!";
             }
         }
+
+        private void Form_Pruebas_Load(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
