@@ -32,7 +32,7 @@ namespace RespZip
             e.Result = "";
             for (int i = 0; i < 100; i++)
             {
-                System.Threading.Thread.Sleep(500); //simulamos trabajo
+                System.Threading.Thread.Sleep(50); //simulamos trabajo
 
                 //hemos completado un porcentaje del trabajo previsto, luego notificamos de ello.
                 backgroundWorker1.ReportProgress(i, DateTime.Now);

@@ -49,7 +49,7 @@ namespace RespZip
                 else
                 {
                     //realiza la operacion que consume tiempo y reporta el progreso
-                    System.Threading.Thread.Sleep(500);
+                    System.Threading.Thread.Sleep(200);
                     worker.ReportProgress(i * 10);
                 }
             }
@@ -57,6 +57,7 @@ namespace RespZip
         //Este controlador de Evento actualiza el progreso
         private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
+            progressBar1.Value = e.ProgressPercentage;
             resultLabel.Text = (e.ProgressPercentage.ToString() + " %");
         }
         //Este controlador de Eventos se refiere a los resultados de la operecion asincrona
