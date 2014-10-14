@@ -55,7 +55,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ICSharpCode.SharpZipLib">
-      <HintPath>D:\DESCARGAS\NAVEGADOR\CLASES Y LIBRERIAS C#\icsharpcode-SharpZipLib-c49a22d\bin\ICSharpCode.SharpZipLib.dll</HintPath>
+      <HintPath>O:\icsharpcode-SharpZipLib-c49a22d\bin\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -77,6 +77,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form_BackgroundWorker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_BackgroundWorker.Designer.cs">
+      <DependentUpon>Form_BackgroundWorker.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form_Pruebas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,6 +94,9 @@
     <Compile Include="SharpZipLib.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_BackgroundWorker.resx">
+      <DependentUpon>Form_BackgroundWorker.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form_Pruebas.resx">
       <DependentUpon>Form_Pruebas.cs</DependentUpon>
