@@ -17,8 +17,8 @@ namespace RespZip
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new form_respaldo());
-            Application.Run(new Form_Pruebas());
-            //Application.Run(new Form_BackgroundWorker());
+            //Application.Run(new Form_Pruebas());
+            Application.Run(new Form_BackgroundWorker());
             
         }
     }

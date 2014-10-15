@@ -39,7 +39,7 @@ namespace RespZip
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
             BackgroundWorker worker = sender as BackgroundWorker;
-            for (int i = 1; i <= 10; i++)
+            for (int i = 1; i <= 50; i++)
             {
                 if (worker.CancellationPending == true)
                 {
@@ -48,9 +48,9 @@ namespace RespZip
                 }
                 else
                 {
-                    //realiza la operacion que consume tiempo y reporta el progreso
-                    System.Threading.Thread.Sleep(200);
-                    worker.ReportProgress(i * 10);
+                    //pausa entre cada completado del progreso de la barra que significara un retardo simulado
+                    System.Threading.Thread.Sleep(400);//milisegundos
+                    worker.ReportProgress(i * 2);
                 }
             }
         }

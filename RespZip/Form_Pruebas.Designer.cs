@@ -38,14 +38,14 @@
             // resultLabel
             // 
             this.resultLabel.AutoSize = true;
-            this.resultLabel.Location = new System.Drawing.Point(44, 22);
+            this.resultLabel.Location = new System.Drawing.Point(46, 64);
             this.resultLabel.Name = "resultLabel";
             this.resultLabel.Size = new System.Drawing.Size(0, 13);
             this.resultLabel.TabIndex = 0;
             // 
             // startAsyncButton
             // 
-            this.startAsyncButton.Location = new System.Drawing.Point(47, 67);
+            this.startAsyncButton.Location = new System.Drawing.Point(49, 102);
             this.startAsyncButton.Name = "startAsyncButton";
             this.startAsyncButton.Size = new System.Drawing.Size(112, 42);
             this.startAsyncButton.TabIndex = 1;
@@ -55,7 +55,7 @@
             // 
             // cancelAsyncButton
             // 
-            this.cancelAsyncButton.Location = new System.Drawing.Point(184, 67);
+            this.cancelAsyncButton.Location = new System.Drawing.Point(186, 102);
             this.cancelAsyncButton.Name = "cancelAsyncButton";
             this.cancelAsyncButton.Size = new System.Drawing.Size(112, 42);
             this.cancelAsyncButton.TabIndex = 1;
@@ -71,7 +71,7 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(47, 139);
+            this.progressBar1.Location = new System.Drawing.Point(49, 26);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(249, 23);
             this.progressBar1.TabIndex = 2;

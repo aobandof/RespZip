@@ -39,7 +39,7 @@
             // 
             this.button1.Location = new System.Drawing.Point(12, 12);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(195, 25);
+            this.button1.Size = new System.Drawing.Size(155, 25);
             this.button1.TabIndex = 0;
             this.button1.Text = "INICIAR";
             this.button1.UseVisualStyleBackColor = true;
@@ -47,9 +47,9 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(252, 12);
+            this.button2.Location = new System.Drawing.Point(233, 12);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(102, 25);
+            this.button2.Size = new System.Drawing.Size(121, 25);
             this.button2.TabIndex = 0;
             this.button2.Text = "CANCELAR";
             this.button2.UseVisualStyleBackColor = true;
@@ -57,16 +57,17 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(13, 53);
+            this.textBox1.Location = new System.Drawing.Point(12, 53);
+            this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(341, 20);
+            this.textBox1.Size = new System.Drawing.Size(342, 161);
             this.textBox1.TabIndex = 1;
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(34, 234);
+            this.progressBar1.Location = new System.Drawing.Point(12, 234);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(320, 23);
+            this.progressBar1.Size = new System.Drawing.Size(342, 23);
             this.progressBar1.TabIndex = 2;
             // 
             // backgroundWorker1
