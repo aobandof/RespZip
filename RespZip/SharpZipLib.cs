@@ -13,8 +13,7 @@ namespace RespZip
     {
         //puse el mismo nombre de la libreria ver si despues tenemos problemas
         public static void iniciar_comprension(String directorio_origen, string directorio_destino, string nombre_archivo)
-        {
-            
+        {          
             //creamos la el objeto zip que contendra los archivos respaldados
             ZipOutputStream zip = new ZipOutputStream(File.Create(@directorio_destino + @"\" + nombre_archivo));
             //Grado de compresión

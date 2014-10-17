@@ -23,14 +23,17 @@ namespace RespZip
             InitializeComponent();
             if (File.Exists(archivo_configuracion)){
                 TextReader config = new StreamReader(archivo_configuracion);//abrimos el archivo para ver su contenido
-                ruta_origen = config.ReadLine();
-                ruta_destino = config.ReadLine();
+                ruta_origen = config.ReadLine(); //leemos la primera linea del archivo de texto que sera la ruta origen
+                ruta_destino = config.ReadLine();//leemos la segunda linea del archivo de texto que sera la ruta destino
                 txb_nombre.Text = DateTime.Now.ToString("yyyy-MM-dd_hh.mm");
                 txb_origen.Text = ruta_origen;
                 txb_destino.Text = ruta_destino;
                 if (!File.Exists(archivo_checkados)){
                     TextWriter config00 = new StreamWriter(archivo_checkados);//lo creamos
                     config00.Close();
+                    ///////////////////////////////////////////////////////////////////////////////////////
+                    //aca ademas debemos abrir el archivo chekados y verificar que las subcarpetas existan
+                    ///////////////////////////////////////////////////////////////////////////////////////
                 }
                 llenar_grupo_subcarpetas(panel_check2,ruta_origen,"S");
                 llenar_grupo_subcarpetas(panel_check1,ruta_origen,"S");
@@ -48,25 +51,19 @@ namespace RespZip
             }
         }
 
-        private void form_respaldo_Load(object sender, EventArgs e)
-        {
-            //txb_nombre.Text = DateTime.Now.ToString("dd-MM-yyyy_hh.mm");
-
-        }
-
         private void tsb_respaldar_Click(object sender, EventArgs e)
         {
             pan_respaldar.Visible = true;
             pan_configurar.Visible = false;
         }
+
         private void tsb_configurar_Click(object sender, EventArgs e)
         {
             //MessageBox.Show("boton 2: tsb_configurar llama a panel configurar verde");
             pan_configurar.Visible = true;
             pan_respaldar.Visible = false;
-            //pan_configurar.Refresh();
-            //pan_respaldar.Refresh();
         }
+
         private void llenar_grupo_subcarpetas(Panel gb, string directorio, string rellenar) //funcion que llena todos los nombres de subcarpetas en la ruta especificada, ademas de activar el atributo selected en las subcarpetas configuradas para que esten activas
         {
             posy = 0;
@@ -89,7 +86,6 @@ namespace RespZip
                     chb_dinamico.Left = 25;                    
                     gb.Controls.Add(chb_dinamico);
                 }
-
                 if (rellenar=="S") {
                     TextReader config3 = new StreamReader(archivo_checkados);
                     while ((linea = config3.ReadLine()) != null)
@@ -103,18 +99,16 @@ namespace RespZip
             else
             {
                 MessageBox.Show("no se encuentra la ruta origen por favor elija la ruta correcta donde estan las carpetas a respaldar");
-                //pan_respaldar.Visible=false;
-                //pan_configurar.Visible=true;
-                //pan_configurar.Refresh();
-                //pan_respaldar.Refresh();
             }
-            //config.Close();
         }
        
         private void pb_respaldar_Click(object sender, EventArgs e)
         {
             //Comprension1.comprimir_archivo(@"C:\ABEL\ESTADOS DE CUENTA\CENTROS ESPECIALES\PRUEBA1.xlsx");
+            ///////////////////////////////////////////////////////////////////////////////////////////
             //debe ir un condicional que muestre un mensaje cuando no hay algun archivo seleccionado
+            ///////////////////////////////////////////////////////////////////////////////////////////
+
             foreach (Control chb in panel_check2.Controls)
             {
                 if (chb is CheckBox)
@@ -150,7 +144,9 @@ namespace RespZip
 
         private void pb_guardar_configuracion_Click(object sender, EventArgs e)
         {
+            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             //aca tenemos que validar el formulario y condicionar a que las cajas de texto no esten vacias y tengan sintaxis de rutas correctas
+            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                         
             if (File.Exists(archivo_configuracion)){
                 File.Delete(archivo_configuracion);  //si existe el archivo lo eliminamos                 
