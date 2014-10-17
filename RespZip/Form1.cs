@@ -28,6 +28,9 @@ namespace RespZip
                 txb_nombre.Text = DateTime.Now.ToString("yyyy-MM-dd_hh.mm");
                 txb_origen.Text = ruta_origen;
                 txb_destino.Text = ruta_destino;
+                backgroundWorker1.WorkerReportsProgress = true;
+                backgroundWorker1.WorkerSupportsCancellation = true;
+
                 if (!File.Exists(archivo_checkados)){
                     TextWriter config00 = new StreamWriter(archivo_checkados);//lo creamos
                     config00.Close();
@@ -109,6 +112,11 @@ namespace RespZip
             //debe ir un condicional que muestre un mensaje cuando no hay algun archivo seleccionado
             ///////////////////////////////////////////////////////////////////////////////////////////
 
+            if (backgroundWorker1.IsBusy != true)
+            {
+                backgroundWorker1.RunWorkerAsync();
+            }
+
             foreach (Control chb in panel_check2.Controls)
             {
                 if (chb is CheckBox)
@@ -169,14 +177,19 @@ namespace RespZip
             llenar_grupo_subcarpetas(panel_check2, txb_origen.Text,"S");
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
-            this.timer1.Start();
+
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            this.progressBar1.Increment(1);
+
+        }
+
+        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+
         }
       }
 }

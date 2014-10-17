@@ -28,14 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(form_respaldo));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tsb_respaldar = new System.Windows.Forms.ToolStripButton();
             this.tsb_configurar = new System.Windows.Forms.ToolStripButton();
             this.pan_respaldar = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.pb_respaldar = new System.Windows.Forms.PictureBox();
             this.panel_check2 = new System.Windows.Forms.Panel();
@@ -49,7 +47,7 @@
             this.panel_check1 = new System.Windows.Forms.Panel();
             this.txb_destino = new System.Windows.Forms.TextBox();
             this.txb_origen = new System.Windows.Forms.TextBox();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.toolStrip1.SuspendLayout();
             this.pan_respaldar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_respaldar)).BeginInit();
@@ -99,7 +97,6 @@
             // 
             this.pan_respaldar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.pan_respaldar.Controls.Add(this.label3);
-            this.pan_respaldar.Controls.Add(this.button1);
             this.pan_respaldar.Controls.Add(this.progressBar1);
             this.pan_respaldar.Controls.Add(this.pb_respaldar);
             this.pan_respaldar.Controls.Add(this.panel_check2);
@@ -117,16 +114,6 @@
             this.label3.Size = new System.Drawing.Size(112, 13);
             this.label3.TabIndex = 6;
             this.label3.Text = "Prenombre de Archivo";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(266, 390);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // progressBar1
             // 
@@ -257,10 +244,11 @@
             this.txb_origen.Size = new System.Drawing.Size(271, 20);
             this.txb_origen.TabIndex = 0;
             // 
-            // timer1
+            // backgroundWorker1
             // 
-            this.timer1.Interval = 10;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            this.backgroundWorker1.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker1_ProgressChanged);
+            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
             // 
             // form_respaldo
             // 
@@ -275,7 +263,6 @@
             this.Opacity = 0.95D;
             this.Text = "Formulario de Respaldo";
             this.TopMost = true;
-            this.Load += new System.EventHandler(this.form_respaldo_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.pan_respaldar.ResumeLayout(false);
@@ -311,9 +298,8 @@
         public System.Windows.Forms.Panel pan_respaldar;
         public System.Windows.Forms.Panel pan_configurar;
         private System.Windows.Forms.ProgressBar progressBar1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label label3;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }
 
