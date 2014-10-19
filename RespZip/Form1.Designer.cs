@@ -299,7 +299,7 @@
         public System.Windows.Forms.Panel pan_configurar;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Label label3;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        public System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }
 

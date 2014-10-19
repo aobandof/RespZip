@@ -12,7 +12,7 @@ namespace RespZip
     class Comprension_SharpZipLib
     {
         //puse el mismo nombre de la libreria ver si despues tenemos problemas
-        public static void iniciar_comprension(String directorio_origen, string directorio_destino, string nombre_archivo)
+        public static void iniciar_comprension(String directorio_origen, string directorio_destino, string nombre_archivo, BackgroundWorker worker, DoWorkEventArgs e)
         {          
             //creamos la el objeto zip que contendra los archivos respaldados
             ZipOutputStream zip = new ZipOutputStream(File.Create(@directorio_destino + @"\" + nombre_archivo));
@@ -22,6 +22,7 @@ namespace RespZip
             ComprimirCarpeta(folder, folder, zip);
             zip.Finish();
             zip.Close();
+            
         }
 
         public static void ComprimirCarpeta(string RootFolder, string CurrentFolder, ZipOutputStream zStream)
@@ -50,7 +51,7 @@ namespace RespZip
             foreach (string file in Directory.GetFiles(CurrentFolder))
             {
                 //MessageBox.Show(Path.GetFileName(file));
-                AñadirFicheroaZip(zStream, relativePath, file);
+              AñadirFicheroaZip(zStream, relativePath, file);
             }
         }
 
