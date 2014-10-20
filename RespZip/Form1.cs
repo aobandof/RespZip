@@ -251,12 +251,22 @@ namespace RespZip
                 dirEntry.DateTime = DateTime.Now;
             }
 
-            //Añade todos los ficheros de la carpeta al zip
-            foreach (string file in Directory.GetFiles(CurrentFolder))
-            {
-                //MessageBox.Show(Path.GetFileName(file));
-              AñadirFicheroaZip(zStream, relativePath, file);
+            
+            if (worker.CancellationPending)
+            {   
+                e.Cancel = true;
+            }
+            else
+            {  
+                //Añade todos los ficheros de la carpeta al zip
+                foreach (string file in Directory.GetFiles(CurrentFolder))
+                {
+                    //MessageBox.Show(Path.GetFileName(file));
+                    AñadirFicheroaZip(zStream, relativePath, file);
+
+
               
+                }
             }
         }
 
