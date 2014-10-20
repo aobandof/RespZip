@@ -48,6 +48,7 @@
             this.txb_destino = new System.Windows.Forms.TextBox();
             this.txb_origen = new System.Windows.Forms.TextBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.lbl_progreso = new System.Windows.Forms.Label();
             this.toolStrip1.SuspendLayout();
             this.pan_respaldar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_respaldar)).BeginInit();
@@ -96,6 +97,7 @@
             // pan_respaldar
             // 
             this.pan_respaldar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.pan_respaldar.Controls.Add(this.lbl_progreso);
             this.pan_respaldar.Controls.Add(this.label3);
             this.pan_respaldar.Controls.Add(this.progressBar1);
             this.pan_respaldar.Controls.Add(this.pb_respaldar);
@@ -117,15 +119,15 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(27, 390);
+            this.progressBar1.Location = new System.Drawing.Point(26, 361);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(226, 23);
+            this.progressBar1.Size = new System.Drawing.Size(226, 17);
             this.progressBar1.TabIndex = 4;
             // 
             // pb_respaldar
             // 
             this.pb_respaldar.Image = global::RespZip.Properties.Resources.ZIP_icon;
-            this.pb_respaldar.Location = new System.Drawing.Point(266, 314);
+            this.pb_respaldar.Location = new System.Drawing.Point(266, 361);
             this.pb_respaldar.Name = "pb_respaldar";
             this.pb_respaldar.Size = new System.Drawing.Size(67, 55);
             this.pb_respaldar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -137,9 +139,9 @@
             // 
             this.panel_check2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.panel_check2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel_check2.Location = new System.Drawing.Point(27, 108);
+            this.panel_check2.Location = new System.Drawing.Point(27, 90);
             this.panel_check2.Name = "panel_check2";
-            this.panel_check2.Size = new System.Drawing.Size(226, 261);
+            this.panel_check2.Size = new System.Drawing.Size(226, 248);
             this.panel_check2.TabIndex = 1;
             // 
             // txb_nombre
@@ -250,6 +252,14 @@
             this.backgroundWorker1.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker1_ProgressChanged);
             this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
             // 
+            // lbl_progreso
+            // 
+            this.lbl_progreso.AutoSize = true;
+            this.lbl_progreso.Location = new System.Drawing.Point(27, 385);
+            this.lbl_progreso.Name = "lbl_progreso";
+            this.lbl_progreso.Size = new System.Drawing.Size(0, 13);
+            this.lbl_progreso.TabIndex = 7;
+            // 
             // form_respaldo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -300,6 +310,7 @@
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Label label3;
         public System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.Label lbl_progreso;
     }
 }
 

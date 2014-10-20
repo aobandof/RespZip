@@ -18,6 +18,9 @@ namespace RespZip
         String archivo_checkados = "checkados.txt";//archivo donde guardaremos todas las subcarpetas elegidas por defecto para hacer respaldo
         String ruta_origen, ruta_destino, nombre_carpeta;
         int posy;
+        long cantidad_archivos;
+        int porcentaje;
+        int maximo_progreso;
 
         public form_respaldo()
         {
@@ -31,8 +34,9 @@ namespace RespZip
                 txb_origen.Text = ruta_origen;
                 txb_destino.Text = ruta_destino;
                 backgroundWorker1.WorkerReportsProgress = true;
-                backgroundWorker1.WorkerSupportsCancellation = true;
-
+                backgroundWorker1.WorkerSupportsCancellation = true;  
+                maximo_progreso=10000;
+                progressBar1.Maximum=maximo_progreso;
                 if (!File.Exists(archivo_checkados))
                 {
                     TextWriter config00 = new StreamWriter(archivo_checkados);//lo creamos
@@ -118,12 +122,10 @@ namespace RespZip
             ///////////////////////////////////////////////////////////////////////////////////////////
             //debe ir un condicional que muestre un mensaje cuando no hay algun archivo seleccionado
             ///////////////////////////////////////////////////////////////////////////////////////////
-
             if (backgroundWorker1.IsBusy != true)
             {
                 backgroundWorker1.RunWorkerAsync();
             }
-
         }
 
         private void pb_actualizar_origen_Click(object sender, EventArgs e)
@@ -188,8 +190,15 @@ namespace RespZip
                 if (chb is CheckBox)
                     if (((CheckBox)chb).Checked)
                     {
+                        //this.lbl_progreso.Text = "Respaldando : ";// +((CheckBox)chb).Name + "...";
+                        //this.lbl_progreso.Text = "probando...";
                         string directorio_origen = txb_origen.Text + "/" + ((CheckBox)chb).Name;
                         string nombre_archivo = txb_nombre.Text + "_" + chb.Name + ".zip";
+                        cantidad_archivos = 0;
+                        //this.progressBar1.Value = progressBar1.Minimum;
+                        obtener_cantidad_total_archivos(directorio_origen);   // con esto obtenemos la cantidad_archivos del directorio que crearemos el zip
+                        MessageBox.Show("cantidad de archivos de carpeta " + chb.Name + " es: " + cantidad_archivos.ToString());
+
                         //Comprension_SharpZipLib.iniciar_comprension(txb_origen.Text + "/" + ((CheckBox)chb).Name, txb_destino.Text, txb_nombre.Text + "_" + chb.Name + ".zip",worker,e);
                         //creamos la el objeto zip que contendra los archivos respaldados
                         ZipOutputStream zip = new ZipOutputStream(File.Create(@txb_destino.Text + @"\" + nombre_archivo));
@@ -229,19 +238,16 @@ namespace RespZip
             progressBar1.Value = 0;
         }
 
-        public static void ComprimirCarpeta(string RootFolder, string CurrentFolder, ZipOutputStream zStream, BackgroundWorker worker, DoWorkEventArgs e)
+        public void ComprimirCarpeta(string RootFolder, string CurrentFolder, ZipOutputStream zStream, BackgroundWorker worker, DoWorkEventArgs e)
         {
             string[] SubFolders = Directory.GetDirectories(CurrentFolder);
-
             //Llama de nuevo al metodo recursivamente para cada carpeta
             foreach (string Folder in SubFolders)
             {                
                 ComprimirCarpeta(RootFolder, Folder, zStream, worker, e);
             }
-
             //obtenemos la ruta relativa de la subcarpeta que estamos recorriendo
             string relativePath = CurrentFolder.Substring(RootFolder.Length) + "/";
-
             //the path "/" is not added or a folder will be created
             //at the root of the file
             if (relativePath.Length > 1)
@@ -250,7 +256,6 @@ namespace RespZip
                 dirEntry = new ZipEntry(relativePath);
                 dirEntry.DateTime = DateTime.Now;
             }
-
             
             if (worker.CancellationPending)
             {   
@@ -260,12 +265,11 @@ namespace RespZip
             {  
                 //Añade todos los ficheros de la carpeta al zip
                 foreach (string file in Directory.GetFiles(CurrentFolder))
-                {
-                    //MessageBox.Show(Path.GetFileName(file));
+                {                    
+                    //MessageBox.Show(Path.GetFileName(file));                    
                     AñadirFicheroaZip(zStream, relativePath, file);
-
-
-              
+                    porcentaje=(int)(maximo_progreso/cantidad_archivos);                    
+                    worker.ReportProgress(porcentaje);                                  
                 }
             }
         }
@@ -308,9 +312,21 @@ namespace RespZip
             }
         }
 
+        ////////////// METODO QUE OBTIENE LA CANTIDAD TOTAL DE ARCHIVOS DE UN DIRECTORIO /////////////////
+        void obtener_cantidad_total_archivos(string ruta)
+        {
+            
+            string[] SubFolders = Directory.GetDirectories(ruta);
+            string[] archivos = Directory.GetFiles(ruta);
+            //Llama de nuevo al metodo recursivamente para cada carpeta
+            foreach (string Folder in SubFolders)
+            {
+                obtener_cantidad_total_archivos(Folder);
+            }
+            cantidad_archivos = cantidad_archivos + archivos.Length;
+        }
+
     }
 }
 
 
-    }
-}
