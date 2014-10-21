@@ -5,16 +5,37 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RespZip", "RespZip\RespZip.csproj", "{6BDC5B65-61CA-4D6E-AFCB-92F376EA5B45}"
 EndProject
+Project("{6141683F-8A12-4E36-9623-2EB02B2C2303}") = "Instalador_RespZip", "Instalador_RespZip\Instalador_RespZip.isproj", "{B05E9FAB-8A3B-4C81-B1AB-5069EECF9CFC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		CD_ROM|Any CPU = CD_ROM|Any CPU
 		Debug|Any CPU = Debug|Any CPU
+		DVD-5|Any CPU = DVD-5|Any CPU
 		Release|Any CPU = Release|Any CPU
+		SingleImage|Any CPU = SingleImage|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6BDC5B65-61CA-4D6E-AFCB-92F376EA5B45}.CD_ROM|Any CPU.ActiveCfg = Release|Any CPU
+		{6BDC5B65-61CA-4D6E-AFCB-92F376EA5B45}.CD_ROM|Any CPU.Build.0 = Release|Any CPU
 		{6BDC5B65-61CA-4D6E-AFCB-92F376EA5B45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6BDC5B65-61CA-4D6E-AFCB-92F376EA5B45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BDC5B65-61CA-4D6E-AFCB-92F376EA5B45}.DVD-5|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BDC5B65-61CA-4D6E-AFCB-92F376EA5B45}.DVD-5|Any CPU.Build.0 = Debug|Any CPU
 		{6BDC5B65-61CA-4D6E-AFCB-92F376EA5B45}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6BDC5B65-61CA-4D6E-AFCB-92F376EA5B45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6BDC5B65-61CA-4D6E-AFCB-92F376EA5B45}.SingleImage|Any CPU.ActiveCfg = Release|Any CPU
+		{6BDC5B65-61CA-4D6E-AFCB-92F376EA5B45}.SingleImage|Any CPU.Build.0 = Release|Any CPU
+		{B05E9FAB-8A3B-4C81-B1AB-5069EECF9CFC}.CD_ROM|Any CPU.ActiveCfg = CD_ROM
+		{B05E9FAB-8A3B-4C81-B1AB-5069EECF9CFC}.CD_ROM|Any CPU.Build.0 = CD_ROM
+		{B05E9FAB-8A3B-4C81-B1AB-5069EECF9CFC}.Debug|Any CPU.ActiveCfg = DVD-5
+		{B05E9FAB-8A3B-4C81-B1AB-5069EECF9CFC}.Debug|Any CPU.Build.0 = DVD-5
+		{B05E9FAB-8A3B-4C81-B1AB-5069EECF9CFC}.DVD-5|Any CPU.ActiveCfg = DVD-5
+		{B05E9FAB-8A3B-4C81-B1AB-5069EECF9CFC}.DVD-5|Any CPU.Build.0 = DVD-5
+		{B05E9FAB-8A3B-4C81-B1AB-5069EECF9CFC}.Release|Any CPU.ActiveCfg = SingleImage
+		{B05E9FAB-8A3B-4C81-B1AB-5069EECF9CFC}.Release|Any CPU.Build.0 = SingleImage
+		{B05E9FAB-8A3B-4C81-B1AB-5069EECF9CFC}.SingleImage|Any CPU.ActiveCfg = SingleImage
+		{B05E9FAB-8A3B-4C81-B1AB-5069EECF9CFC}.SingleImage|Any CPU.Build.0 = SingleImage
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

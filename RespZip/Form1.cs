@@ -17,10 +17,8 @@ namespace RespZip
         String archivo_configuracion = "config.txt";//archivo donde guardaremos la ruta origen y destino elegidos
         String archivo_checkados = "checkados.txt";//archivo donde guardaremos todas las subcarpetas elegidas por defecto para hacer respaldo
         String ruta_origen, ruta_destino, nombre_carpeta;
-        int posy;
-        long cantidad_archivos;
-        int porcentaje;
-        int maximo_progreso;
+        int posy,maximo_progreso;
+        long cantidad_archivos,porcentaje;        
 
         public form_respaldo()
         {
@@ -193,20 +191,17 @@ namespace RespZip
                 if (chb is CheckBox)
                     if (((CheckBox)chb).Checked)
                     {
-                        this.lbl_progreso.Text = "Respaldando : " +((CheckBox)chb).Name + "...";
-                        //this.lbl_progreso.Text = "probando...";
+                        this.lbl_progreso.Text = "Respaldando : " +((CheckBox)chb).Name + "...";                       
                         string directorio_origen = txb_origen.Text + "/" + ((CheckBox)chb).Name;
                         string nombre_archivo = txb_nombre.Text + "_" + chb.Name + ".zip";
                         cantidad_archivos = 0;
+                        porcentaje = 0;
                         this.progressBar1.Value = progressBar1.Minimum;
                         obtener_cantidad_total_archivos(directorio_origen);   // con esto obtenemos la cantidad_archivos del directorio que crearemos el zip
-                        MessageBox.Show("cantidad de archivos de carpeta " + chb.Name + " es: " + cantidad_archivos.ToString());
-
-                        //Comprension_SharpZipLib.iniciar_comprension(txb_origen.Text + "/" + ((CheckBox)chb).Name, txb_destino.Text, txb_nombre.Text + "_" + chb.Name + ".zip",worker,e);
+                        //MessageBox.Show("cantidad de archivos de carpeta " + chb.Name + " es: " + cantidad_archivos.ToString());
                         //creamos la el objeto zip que contendra los archivos respaldados
                         ZipOutputStream zip = new ZipOutputStream(File.Create(@txb_destino.Text + @"\" + nombre_archivo));
-                        //Grado de compresión
-                        zip.SetLevel(9);
+                        zip.SetLevel(9); //Grado de compresión
                         string folder = @directorio_origen + "\\";
                         ComprimirCarpeta(folder, folder, zip, worker, e);
                         zip.Finish();
@@ -227,7 +222,11 @@ namespace RespZip
 
             if (e.Error == null)
             {
-                MessageBox.Show("Respaldo realizado con Exito");
+                //MessageBox.Show("Respaldo realizado con Exito");
+                lbl_progreso.Text = "REPORTE REALIZADO CON EXITO";
+                lbl_progreso.ForeColor = Color.Red;
+                lbl_progreso.BackColor = Color.Yellow;
+                lbl_progreso.Font = new Font(lbl_progreso.Font, FontStyle.Bold); 
             }
             else
             {
@@ -272,8 +271,10 @@ namespace RespZip
                 {                    
                     //MessageBox.Show(Path.GetFileName(file));                    
                     AñadirFicheroaZip(zStream, relativePath, file);
-                    porcentaje=(int)(maximo_progreso/cantidad_archivos);                    
-                    worker.ReportProgress(porcentaje);                                  
+                    porcentaje=porcentaje+(maximo_progreso/cantidad_archivos);                    
+                    worker.ReportProgress((int)(porcentaje));
+                    //MessageBox.Show("avanzo: " + porcentaje.ToString());
+                    
                 }
             }
         }
