@@ -25,8 +25,10 @@ namespace RespZip
         public form_respaldo()
         {
             InitializeComponent();
+            CheckForIllegalCrossThreadCalls = false; //con esto conseguimos poder modificar controles desde subprocesos
             if (File.Exists(archivo_configuracion))
             {
+                
                 TextReader config = new StreamReader(archivo_configuracion);//abrimos el archivo para ver su contenido
                 ruta_origen = config.ReadLine(); //leemos la primera linea del archivo de texto que sera la ruta origen
                 ruta_destino = config.ReadLine();//leemos la segunda linea del archivo de texto que sera la ruta destino
@@ -187,15 +189,16 @@ namespace RespZip
             BackgroundWorker worker = sender as BackgroundWorker;
             foreach (Control chb in panel_check2.Controls)
             {
+                
                 if (chb is CheckBox)
                     if (((CheckBox)chb).Checked)
                     {
-                        //this.lbl_progreso.Text = "Respaldando : ";// +((CheckBox)chb).Name + "...";
+                        this.lbl_progreso.Text = "Respaldando : " +((CheckBox)chb).Name + "...";
                         //this.lbl_progreso.Text = "probando...";
                         string directorio_origen = txb_origen.Text + "/" + ((CheckBox)chb).Name;
                         string nombre_archivo = txb_nombre.Text + "_" + chb.Name + ".zip";
                         cantidad_archivos = 0;
-                        //this.progressBar1.Value = progressBar1.Minimum;
+                        this.progressBar1.Value = progressBar1.Minimum;
                         obtener_cantidad_total_archivos(directorio_origen);   // con esto obtenemos la cantidad_archivos del directorio que crearemos el zip
                         MessageBox.Show("cantidad de archivos de carpeta " + chb.Name + " es: " + cantidad_archivos.ToString());
 
@@ -209,6 +212,7 @@ namespace RespZip
                         zip.Finish();
                         zip.Close();
                     }
+
             }
         }
 
