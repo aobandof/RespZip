@@ -25,8 +25,7 @@ namespace RespZip
             InitializeComponent();
             CheckForIllegalCrossThreadCalls = false; //con esto conseguimos poder modificar controles desde subprocesos
             if (File.Exists(archivo_configuracion))
-            {
-                
+            {                
                 TextReader config = new StreamReader(archivo_configuracion);//abrimos el archivo para ver su contenido
                 ruta_origen = config.ReadLine(); //leemos la primera linea del archivo de texto que sera la ruta origen
                 ruta_destino = config.ReadLine();//leemos la segunda linea del archivo de texto que sera la ruta destino
@@ -47,7 +46,7 @@ namespace RespZip
                 }
                 llenar_grupo_subcarpetas(panel_check2, ruta_origen, "S");
                 llenar_grupo_subcarpetas(panel_check1, ruta_origen, "S");
-
+                config.Close();
             }
             else
             {
@@ -118,7 +117,6 @@ namespace RespZip
 
         private void pb_respaldar_Click(object sender, EventArgs e)
         {
-            //Comprension1.comprimir_archivo(@"C:\ABEL\ESTADOS DE CUENTA\CENTROS ESPECIALES\PRUEBA1.xlsx");
             ///////////////////////////////////////////////////////////////////////////////////////////
             //debe ir un condicional que muestre un mensaje cuando no hay algun archivo seleccionado
             ///////////////////////////////////////////////////////////////////////////////////////////
@@ -160,7 +158,7 @@ namespace RespZip
 
             if (File.Exists(archivo_configuracion))
             {
-                File.Delete(archivo_configuracion);  //si existe el archivo lo eliminamos                 
+                //File.Delete(archivo_configuracion);  //si existe el archivo lo eliminamos                                 
             }
             TextWriter config1 = new StreamWriter(archivo_configuracion); //creamos el puntero al archivo config.txt (si el archivo no existe, lo crea)
             config1.WriteLine(txb_origen.Text);  //Escribe en la primera linea la ruta de origen
@@ -311,9 +309,12 @@ namespace RespZip
             {
                 //MessageBox.Show("aca se produce el error: " + ex.Message + "\n" + ex.Source + "\n" + ex.HResult + "\n" + ex.TargetSite + "\n ver que codigo poner si sucede la excepcion");
                 //MessageBox.Show("El archivo "+file+" esta siendo usado por otro programa \n se creara una copia y se agregara al respaldo");
-                String ruta_completa_archivo_temporal="temp/"+Path.GetFileName(file);
-                File.Copy(file,ruta_completa_archivo_temporal,true);//EL atributo booleano "true" permite la sobre escritura
-                AñadirFicheroaZip(zStream, relativePath, ruta_completa_archivo_temporal);
+                String ruta_completa_archivo_temporal="temp_respzip/"+Path.GetFileName(file);
+                if (ruta_completa_archivo_temporal.IndexOf("~$") == -1) //esto es cuando no es un archivo basura
+                {
+                    File.Copy(file, ruta_completa_archivo_temporal, true);//EL atributo booleano "true" permite la sobre escritura
+                    AñadirFicheroaZip(zStream, relativePath, ruta_completa_archivo_temporal);
+                }
             }
         }
 
