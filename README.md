@@ -1,4 +1,2 @@
-RespZip
-=======
-
-Creador de Zip personalizado para sub carpetas elegidas
+#ResZip
+### Aplicación de Escritorio que permite crear respaldo de CARPETAS y ARCHIVOS en paquetes ZIP.
